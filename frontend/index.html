@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biblioteca · CRUD Libro-Autor</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor encabezado__interior">
+      <div>
+        <h1 class="marca">Biblioteca</h1>
+        <p class="marca__sub">CRUD Spring Boot + JPA + MySQL · relación Libro → Autor</p>
+      </div>
+      <nav class="pestanas" role="tablist">
+        <button class="pestana activa" data-vista="libros" role="tab">Libros</button>
+        <button class="pestana" data-vista="autores" role="tab">Autores</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <div id="aviso" class="aviso" hidden></div>
+
+    <!-- ===== LIBROS ===== -->
+    <section id="vista-libros" class="vista">
+      <div class="tarjeta">
+        <h2 id="titulo-form-libro">Nuevo libro</h2>
+        <form id="form-libro" class="formulario" novalidate>
+          <input type="hidden" id="libro-id">
+          <label>Título
+            <input id="libro-titulo" maxlength="200" required>
+          </label>
+          <label>ISBN
+            <input id="libro-isbn" maxlength="20" required>
+          </label>
+          <label>Año de publicación
+            <input id="libro-anio" type="number" min="1000" max="2100">
+          </label>
+          <label>Páginas
+            <input id="libro-paginas" type="number" min="1">
+          </label>
+          <label>Autor
+            <select id="libro-autor" required></select>
+          </label>
+          <div class="acciones">
+            <button type="submit" class="boton boton--primario" id="btn-guardar-libro">Guardar</button>
+            <button type="button" class="boton" id="btn-cancelar-libro" hidden>Cancelar edición</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Libros registrados</h2>
+        <div class="tabla-envoltura">
+          <table>
+            <thead>
+              <tr><th>ID</th><th>Título</th><th>ISBN</th><th>Año</th><th>Págs.</th><th>Autor</th><th></th></tr>
+            </thead>
+            <tbody id="tabla-libros"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AUTORES ===== -->
+    <section id="vista-autores" class="vista" hidden>
+      <div class="tarjeta">
+        <h2 id="titulo-form-autor">Nuevo autor</h2>
+        <form id="form-autor" class="formulario" novalidate>
+          <input type="hidden" id="autor-id">
+          <label>Nombre
+            <input id="autor-nombre" maxlength="120" required>
+          </label>
+          <label>Nacionalidad
+            <input id="autor-nacionalidad" maxlength="60">
+          </label>
+          <div class="acciones">
+            <button type="submit" class="boton boton--primario">Guardar</button>
+            <button type="button" class="boton" id="btn-cancelar-autor" hidden>Cancelar edición</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Autores registrados</h2>
+        <div class="tabla-envoltura">
+          <table>
+            <thead>
+              <tr><th>ID</th><th>Nombre</th><th>Nacionalidad</th><th></th></tr>
+            </thead>
+            <tbody id="tabla-autores"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie contenedor">
+    API: <code id="api-url"></code>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
