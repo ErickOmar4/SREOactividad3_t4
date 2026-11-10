@@ -1,0 +1,28 @@
+# Compilación
+target/
+*.jar
+*.class
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+*.swp
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Secretos y configuración local (NUNCA subir credenciales reales)
+.env
+application-local.properties
+application-prod.properties
+*.pem
+*.key
+
+# Logs
+*.log
+logs/
